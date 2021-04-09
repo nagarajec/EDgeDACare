@@ -26,7 +26,7 @@ for voice in voices:
     engine.setProperty('voice', voice)
     print(voice)
 
-i=0
+
 lap = 0
 
 LONG_TIMEOUT = 20
@@ -48,9 +48,6 @@ notification.notify(**kwargs)
 engine.runAndWait()
     
 while True:
-    i = i+1
-    if i==10:
-        break
     time.sleep(SHORT_TIMEOUT)
     if lap == LONG_TIMEOUT/SHORT_TIMEOUT:
         mesg_long_duration = (random.choice(LONG_DURATION_MESSAGE))
