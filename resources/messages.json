@@ -1,0 +1,16 @@
+{
+  "welcome_messages": [
+    {
+      "title": "Hi There!",
+      "message": "How are you doing today?\nI'll be here to help you stay healthy throughout the day.\nAny areas you would like to focus on today?"
+    },
+    {
+      "title": "Hello Champ!",
+      "message": "All work and no play . . .\nWant to tell me where it hurts?"
+    },
+    {
+      "title": "What's Up?",
+      "message": "Today is gonna be a great day :)!\nClick the green button below if you'd like some focused attention today."
+    }
+  ]
+}
