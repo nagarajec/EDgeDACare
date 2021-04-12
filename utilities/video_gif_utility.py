@@ -1,26 +1,40 @@
-import pafy
-import webview
-from utilities.common_utility import get_video_based_on_area
 import time
 from tkinter import *
 
+import pafy
+import pyglet as pyglet
+import webview
+
+from utilities.common_utility import get_video_based_on_area
+
 
 def play_video(da_care_config):
-    # video = pafy.new(url)
-    # best = video.getbest()
-    #time.sleep(da_care_config.get_second_counter(10))
     selected_area_list = da_care_config.get_area_list()
     video_url = get_video_based_on_area(selected_area_list)
-    webview.create_window('Video Player', video_url)
+    webview.create_window('DA Care', video_url)
     webview.start()
 
 
 def load_gif_img(gif_path):
-    window = Toplevel()
-    window.title('GIF')
-    canvas = Canvas(window, width=500, height=500)
-    canvas.pack()
-    print(gif_path)
-    my_image = PhotoImage(file=gif_path)
-    print(my_image)
-    canvas.create_image(0, 0, anchor=NW, image=my_image)
+    # pick an animated gif file you have in the working directory
+    ag_file = gif_path
+    animation = pyglet.resource.animation(ag_file)
+    sprite = pyglet.sprite.Sprite(animation)
+
+    # create a window and set it to the image size
+    win = pyglet.window.Window(width=sprite.width, height=sprite.height)
+
+    # set window background color = r, g, b, alpha
+    # each value goes from 0.0 to 1.0
+    green = 0, 1, 0, 1
+    pyglet.gl.glClearColor(*green)
+
+    @win.event
+    def on_draw():
+        win.clear()
+        sprite.draw()
+
+    pyglet.app.run()
+
+if __name__ == '__main__':
+    load_gif_img()

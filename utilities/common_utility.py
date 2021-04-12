@@ -1,12 +1,11 @@
 import base64
 import json
-import sys
-from pathlib import Path
 import random
+from pathlib import Path
+
 from utilities.time_utility import get_youtube_time_difference
 
 ROOT = Path(__file__).parent.parent
-
 
 
 def get_image_from_file(image_file_name):
@@ -46,14 +45,15 @@ def get_video_based_on_area(list_of_areas):
     start_time = get_youtube_time_difference(start, end)
     return video_url.format(int(start_time))
 
-def get_gif_path(Area):
-    if Area == "Eyes":
+
+def get_gif_path(area):
+    if area == "Eyes":
         filename = Path(f'{ROOT}/media/chair-squat.gif')
-    elif Area == "Lower Body":
+    elif area == "Lower Body":
         filename = Path(f'{ROOT}/media/calf-raise.gif')
-    elif Area == "Upper Body":
+    elif area == "Upper Body":
         filename = Path(f'{ROOT}/media/rear_pulse.gif')
-    elif Area == "waist":
+    elif area == "waist":
         filename = Path(f'{ROOT}/media/calf-raise.gif')
     else:
         filename = Path(f'{ROOT}/media/chair-squat.gif')

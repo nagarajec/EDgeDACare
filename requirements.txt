@@ -5,3 +5,6 @@ future
 Pillow
 pytz
 requests
+youtube-dl
+
+pafy
