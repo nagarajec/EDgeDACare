@@ -87,7 +87,7 @@ def display_side_notification(notification_title, notification_message, user_rea
     lines_in_message = 0
     for line_index in range(len(notification_message_list)):
         # Text wrap each line in the message
-        notification_message_list[line_index] = textwrap.fill(notification_message_list[line_index], 60)
+        notification_message_list[line_index] = textwrap.fill(notification_message_list[line_index], 55)
         lines_in_message += notification_message_list[line_index].count("\n") + 1.5
     # print(lines_in_message)
 

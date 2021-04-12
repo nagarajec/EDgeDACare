@@ -1,32 +1,32 @@
 {
   "stretch_video_movlee": {
     "url": "https://youtu.be/xELgfiXSw-s?t={start_time}s",
-    "full_body_stretches": {
+    "full_body": {
       "duration_in_minutes": "7:28",
       "start": "0:00",
       "stop": "7:28"
     },
-    "upper_back_stretches": {
+    "upper_back": {
       "duration_in_minutes": "1:14",
       "start": "0:00",
       "stop": "1:14"
     },
-    "arm_stretches": {
+    "arm": {
       "duration_in_minutes": "1:03",
       "start": "1:14",
       "stop": "2:17"
     },
-    "waist_stretches": {
+    "waist": {
       "duration_in_minutes": "0:57",
       "start": "2:17",
       "stop": "3:14"
     },
-    "leg_stretches": {
+    "leg": {
       "duration_in_minutes": "1:30",
       "start": "3:14",
       "stop": "4:44"
     },
-    "lower_back_stretches": {
+    "lower_back": {
       "duration_in_minutes": "2:44",
       "start": "4:44",
       "stop": "7:28"
