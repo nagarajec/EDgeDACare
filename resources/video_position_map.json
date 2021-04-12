@@ -1,5 +1,5 @@
 {
-  "stretch_video_movlee": {
+  "movlee_video": {
     "url": "https://youtu.be/xELgfiXSw-s?t={start_time}s",
     "full_body": {
       "duration_in_minutes": "7:28",
