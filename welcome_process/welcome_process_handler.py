@@ -4,11 +4,16 @@ from utilities.config_setter import Config
 import PySimpleGUI as sg
 from random import randint
 import time
+import webbrowser
+from tkinter import *
 
 from utilities.notification_utilities.user_reaction_notification import display_side_notification
 
 # Create a session object to hold all the configs
 ses = requests.Session()
+window = Tk()
+window.title("DdP Program")
+window.geometry("300x100")
 
 global config_setter
 
@@ -57,7 +62,9 @@ def get_message():
 
 
 def show_video():
-    time.sleep()
+    time.sleep(30)
+    print("Showing videos")
+    webbrowser.open('https://www.youtube.com/watch?v=cyvuaL_2avY', new=1)
 
 
 def start_process():
@@ -65,7 +72,7 @@ def start_process():
     if config_setter.get_count() == 0:
         title, message = get_message()
         display_side_notification(title, message, user_reaction_handlers=(
-            [show_video(), ()], [set_focus_areas, ([1, 2, 3],)]))
+            [show_video, ()], [set_focus_areas, ([1, 2, 3],)]))
 
 
 if __name__ == '__main__':
