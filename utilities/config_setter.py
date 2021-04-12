@@ -4,7 +4,7 @@ class Config:
         self._is_started = is_started
         self._option_list = option_list
         self._area = area
-        self._option_list = ['Upper Back', 'Lower Back', 'Arm', 'Neck', 'Eyes', ]
+        self._option_list = ['Eyes', 'Lower Body', 'Upper Body', 'Neck', 'Shoulder', 'Waist']
 
     # getter method for count
     def get_count(self):
