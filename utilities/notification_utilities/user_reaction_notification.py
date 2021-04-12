@@ -25,15 +25,16 @@ DEFAULT_DISPLAY_DURATION_IN_MILLISECONDS = 600000
 # -------------------------------------------------------------------
 
 
-def handle_user_reaction(window, actions, reaction_displacement=0):
+def handle_user_reaction(window, actions, display_duration_in_ms, reaction_displacement=0):
     while True:
-        event, values = window.read(timeout=DEFAULT_DISPLAY_DURATION_IN_MILLISECONDS)
+        event, values = window.read(timeout=display_duration_in_ms)
         print(event, values)
 
         if event == "-GRAPH-":
             if values["-GRAPH-"][0] in range(276, 300) and \
                     values["-GRAPH-"][1] in range(55 + (15 * int(reaction_displacement)),
                                                   80 + (15 * int(reaction_displacement))):
+                window.alpha_channel = 0  # Make the window invisible to the user
                 # Get the positive reaction handler function info
                 reaction_function, reaction_function_inputs = actions[0]
                 reaction_function(*reaction_function_inputs)
@@ -41,25 +42,16 @@ def handle_user_reaction(window, actions, reaction_displacement=0):
             if values["-GRAPH-"][0] in range(319, 343) and \
                     values["-GRAPH-"][1] in range(55 + (15 * int(reaction_displacement)),
                                                   80 + (15 * int(reaction_displacement))):
+                window.alpha_channel = 0  # Make the window invisible to the user
                 reaction_function, reaction_function_inputs = actions[1]
                 reaction_function(*reaction_function_inputs)
                 break
         if event == "__TIMEOUT__":
-            print(f"There were no actions selected within {DEFAULT_DISPLAY_DURATION_IN_MILLISECONDS/1000}s")
+            print(f"There were no actions selected within {display_duration_in_ms / 1000}s")
+            window.alpha_channel = 0  # Make the window invisible to the user
+            reaction_function, reaction_function_inputs = actions[2]
+            reaction_function(*reaction_function_inputs)
             break
-
-
-def validate_user_reaction_handlers(user_reaction_handlers):
-    # User Reaction Validation
-    try:
-        if 0 < len(user_reaction_handlers) < 2 or len(user_reaction_handlers) > 3 \
-                or any((not type(handler) == list) or (not type(handler[0]) == type(display_side_notification))
-                       or(not type(handler[1]) == tuple) for handler in user_reaction_handlers):
-            raise RuntimeError("There is a problem with the User Reaction Handlers. "
-                               "Please see the expected type in the doc string.")
-    except Exception as _:
-        raise RuntimeError("There is a problem with the User Reaction Handlers. "
-                           "Please see the expected type in the doc string.")
 
 
 def display_side_notification(notification_title, notification_message, user_reaction_handlers=HANDLERS,
@@ -80,7 +72,6 @@ def display_side_notification(notification_title, notification_message, user_rea
             :return: id returned from tkinter that you'll need if you want to manipulate the image
             :rtype: int | None
     """
-    validate_user_reaction_handlers(user_reaction_handlers)
 
     # Compute location and size of the window
     notification_message_list = notification_message.split("\n")  # Split the message based on line breaks
@@ -95,7 +86,7 @@ def display_side_notification(notification_title, notification_message, user_rea
     win_margin = 60  # distance from screen edges
     win_width = 374
     # Set the pop-up's width and height relative to the message
-    if user_reaction_handlers:
+    if user_reaction_handlers and len([handler for handler in user_reaction_handlers if handler]) >= 2:
         win_height = 85 + (15 * lines_in_message)
     else:
         win_height = 50 + (15 * lines_in_message)
@@ -122,7 +113,7 @@ def display_side_notification(notification_title, notification_message, user_rea
         current_line_height += (15 * (message_line.count("\n") + 1.5))
         # print(current_line_height)
 
-    if user_reaction_handlers:
+    if user_reaction_handlers and len([handler for handler in user_reaction_handlers if handler]) >= 2:
         # Add the positive and negative reaction buttons to the rectangular background
         window["-GRAPH-"] \
             .draw_image(data=get_image_from_file("Yes 26 px.png"), location=(274, 47 + (15 * lines_in_message)))
@@ -137,21 +128,9 @@ def display_side_notification(notification_title, notification_message, user_rea
             window.refresh()
             time.sleep(.0001)
 
-        handle_user_reaction(window, user_reaction_handlers, lines_in_message)
-
-        for i in range(int(WINDOW_ALPHA * 100), 1, -1):  # fade out
-            window.set_alpha(i)
-            window.refresh()
+        handle_user_reaction(window, user_reaction_handlers, display_duration_in_ms, lines_in_message)
     else:
         window.set_alpha(WINDOW_ALPHA)
-        handle_user_reaction(window, user_reaction_handlers, lines_in_message)
+        handle_user_reaction(window, user_reaction_handlers, display_duration_in_ms, lines_in_message)
 
     window.close()  # Close the window after the reactions have been handled
-
-
-if __name__ == '__main__':
-    # title = "Hi There!"
-    # message = "How are you doing today?\nI'll be here to help you stay healthy throughout the day.\n" \
-    #           "Any areas you would like to focus on today?"
-    # display_side_notification(title, message, True)
-    pass

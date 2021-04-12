@@ -9,25 +9,29 @@ def get_current_time():
     return current_time
 
 
-def get_calendar_entries():
+def does_user_have_meeting_within_5_minutes():
     try:
-        with open('resources/meetings.csv', newline='') as csvfile:
-            reader = csv.reader(csvfile, delimiter=',')
+        with open('resources/meetings.csv', newline='') as csv_file:
+            reader = csv.reader(csv_file, delimiter=',')
             next(reader)
             current_time = get_current_time()
 
             for row in reader:
                 start_time = datetime.datetime.strptime(row[0], '%H:%M')
                 end_time = datetime.datetime.strptime(row[1], '%H:%M')
-                if start_time <= current_time <= end_time:
-                    return False
 
-        return True
+                # If the current time is within the start time and end time, then the user is in a meeting
+                if start_time <= current_time <= end_time:
+                    print("The User is in a meeting now!")
+                    return True
+
+        print("The User is in not a meeting now!")
+        return False
 
     except Exception as e:
         print(str(e))
 
 
 if __name__ == "__main__":
-    events = get_calendar_entries()
+    events = does_user_have_meeting_within_5_minutes()
     print(events)
