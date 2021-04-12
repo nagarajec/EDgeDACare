@@ -8,4 +8,4 @@ da_care_config = DACareConfig()
 # Begin the DA Care process
 welcome_the_user(da_care_config)  # Welcome the user and set the care focus areas
 
-# start_scheduled_process(da_care_config)  # Kick off the DA Care scheduled process
+start_scheduled_process(da_care_config)  # Kick off the DA Care scheduled process
