@@ -6,7 +6,7 @@
     },
     {
       "title": "Hello Champ!",
-      "message": "All work and no play . . .\nWant to tell me where it hurts?"
+      "message": "All work and no play . . .\nPlease tell me the focus area for today\n"
     },
     {
       "title": "What's Up?",
@@ -15,15 +15,15 @@
   ],
   "snooze_messages": [
     {
-      "title": "Snooze One",
+      "title": "Reminder One",
       "message": "No problem! I will remind you after 15 mins!"
     },
     {
-      "title": "Snooze two",
+      "title": "Reminder two",
       "message": "I know you are busy, but you MATTER! why don't you try this quick exercise gif"
     },
     {
-      "title": "Snooze three",
+      "title": "Reminder three",
       "message": "I am back, how about that break?"
     }
   ],

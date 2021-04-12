@@ -11,7 +11,7 @@ def get_welcome_message(da_care_config):
     # Get a random welcome message
     # all welcome messages prompt the user to indicate if (s)he'd like a focus area or not
     if not da_care_config.get_is_started():
-        current_message = welcome_messages[randint(0, len(welcome_messages) - 1)]
+        current_message = welcome_messages[0]
         da_care_config.set_is_started(True)
         return current_message["title"], current_message["message"]
 
