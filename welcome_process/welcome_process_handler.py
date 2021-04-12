@@ -5,13 +5,13 @@ import PySimpleGUI as sg
 from random import randint
 import time
 import webbrowser
-from tkinter import *
+import tkinter
 
 from utilities.notification_utilities.user_reaction_notification import display_side_notification
 
 # Create a session object to hold all the configs
 ses = requests.Session()
-window = Tk()
+window = tkinter.Tk()
 window.title("DdP Program")
 window.geometry("300x100")
 
@@ -21,7 +21,7 @@ global config_setter
 def get_welcome_message():
     welcome_messages = json.load(open("../resources/messages.json", "r"))["welcome_messages"]
     if not config_setter.get_is_started():
-        current_message = welcome_messages[randint(0, 0)]
+        current_message = welcome_messages[randint(0, len(welcome_messages) - 1)]
         config_setter.set_is_started(True)
         return current_message["title"], current_message["message"]
 

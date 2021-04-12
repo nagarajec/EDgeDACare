@@ -34,7 +34,8 @@ def handle_user_reaction(window, actions, reaction_displacement=0):
             if values["-GRAPH-"][0] in range(276, 300) and \
                     values["-GRAPH-"][1] in range(55 + (15 * int(reaction_displacement)),
                                                   80 + (15 * int(reaction_displacement))):
-                reaction_function, reaction_function_inputs = actions[0]  # Get the positive reaction handler function info
+                # Get the positive reaction handler function info
+                reaction_function, reaction_function_inputs = actions[0]
                 reaction_function(*reaction_function_inputs)
                 break
             if values["-GRAPH-"][0] in range(319, 343) and \
@@ -59,7 +60,6 @@ def validate_user_reaction_handlers(user_reaction_handlers):
     except Exception as _:
         raise RuntimeError("There is a problem with the User Reaction Handlers. "
                            "Please see the expected type in the doc string.")
-
 
 
 def display_side_notification(notification_title, notification_message, user_reaction_handlers=HANDLERS,
@@ -94,10 +94,11 @@ def display_side_notification(notification_title, notification_message, user_rea
     screen_res_x, screen_res_y = sg.Window.get_screen_size()
     win_margin = 60  # distance from screen edges
     win_width = 374
+    # Set the pop-up's width and height relative to the message
     if user_reaction_handlers:
-        win_height = 85 + (15 * lines_in_message)  # Set the pop-up's width and height relative to the message
+        win_height = 85 + (15 * lines_in_message)
     else:
-        win_height = 50 + (15 * lines_in_message)  # Set the pop-up's width and height relative to the message
+        win_height = 50 + (15 * lines_in_message)
 
     layout = [[sg.Graph(canvas_size=(win_width, win_height), graph_bottom_left=(0, win_height),
                         graph_top_right=(win_width, 0), key="-GRAPH-", background_color=WIN_COLOR, enable_events=True)]]
