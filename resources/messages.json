@@ -11,6 +11,23 @@
     {
       "title": "What's Up?",
       "message": "Today is gonna be a great day :)!\nClick the green button below if you'd like some focused attention today."
+    },
+    {
+      "title": "Reminder",
+      "message": "Your next break is coming up in 10 mins, are you ready?"
+    },
+    {
+      "title": "Snooze one!",
+      "message": "I am back, how about that break?"
+    },
+    {
+      "title": "Snooze two",
+      "message": "No problem! I will remind you after 15 mins!"
+    },
+    {
+      "title": "Snooze two",
+      "message": "No problem! I will remind you after 15 mins!"
     }
+
   ]
 }
