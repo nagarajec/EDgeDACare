@@ -17,12 +17,12 @@ def play_video(da_care_config):
 
 def load_gif_img(gif_path):
     # pick an animated gif file you have in the working directory
-    ag_file = gif_path
-    animation = pyglet.resource.animation(ag_file)
-    sprite = pyglet.sprite.Sprite(animation)
+    # ag_file = gif_path
+    animation = pyglet.image.load_animation(gif_path)
+    animSprite = pyglet.sprite.Sprite(animation)
 
     # create a window and set it to the image size
-    win = pyglet.window.Window(width=sprite.width, height=sprite.height)
+    win = pyglet.window.Window(width=animSprite.width, height=animSprite.height)
 
     # set window background color = r, g, b, alpha
     # each value goes from 0.0 to 1.0
@@ -32,9 +32,10 @@ def load_gif_img(gif_path):
     @win.event
     def on_draw():
         win.clear()
-        sprite.draw()
+        animSprite.draw()
 
     pyglet.app.run()
+
 
 if __name__ == '__main__':
     load_gif_img()
