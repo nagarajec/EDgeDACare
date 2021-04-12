@@ -15,16 +15,16 @@
   ],
   "snooze_messages": [
     {
-      "title": "Snooze one!",
+      "title": "Snooze One",
+      "message": "No problem! I will remind you after 15 mins!"
+    },
+    {
+      "title": "Snooze two",
+      "message": "I know you are busy, but you MATTER! why don't you try this quick exercise gif"
+    },
+    {
+      "title": "Snooze three",
       "message": "I am back, how about that break?"
-    },
-    {
-      "title": "Snooze two",
-      "message": "No problem! I will remind you after 15 mins!"
-    },
-    {
-      "title": "Snooze two",
-      "message": "No problem! I will remind you after 15 mins!"
     }
   ],
   "reminder": [

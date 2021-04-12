@@ -5,6 +5,7 @@ import PySimpleGUI as sg
 
 from utilities.common_utility import get_image_from_file
 
+
 '''
     Retrieved and modified from PySimpleGUI user ncotrb
 '''
@@ -29,7 +30,7 @@ def handle_user_reaction(window, actions, display_duration_in_ms, reaction_displ
     while True:
         event, values = window.read(timeout=display_duration_in_ms)
         print(event, values)
-
+        print(actions)
         if event == "-GRAPH-":
             if values["-GRAPH-"][0] in range(276, 300) and \
                     values["-GRAPH-"][1] in range(55 + (15 * int(reaction_displacement)),
@@ -134,3 +135,6 @@ def display_side_notification(notification_title, notification_message, user_rea
         handle_user_reaction(window, user_reaction_handlers, display_duration_in_ms, lines_in_message)
 
     window.close()  # Close the window after the reactions have been handled
+
+
+
