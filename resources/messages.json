@@ -2,7 +2,7 @@
   "welcome_messages": [
     {
       "title": "Hi There!",
-      "message": "Welcome to DA Care, we are here to help you stay healthy all day- because YOU MATTER! Do you want to focus on any particular area today?"
+      "message": "Welcome to DA Care, I am here to help you stay healthy all day- because YOU MATTER! Do you want to focus on any particular area today?"
     },
     {
       "title": "Hello Champ!",
@@ -11,11 +11,9 @@
     {
       "title": "What's Up?",
       "message": "Today is gonna be a great day :)!\nClick the green button below if you'd like some focused attention today."
-    },
-    {
-      "title": "Reminder",
-      "message": "Your next break is coming up in 10 mins, are you ready?"
-    },
+    }
+  ],
+  "snooze_messages": [
     {
       "title": "Snooze one!",
       "message": "I am back, how about that break?"
@@ -28,6 +26,11 @@
       "title": "Snooze two",
       "message": "No problem! I will remind you after 15 mins!"
     }
-
+  ],
+  "reminder": [
+    {
+      "title": "Reminder",
+      "message": "Your next break is coming up in 10 minutes, are you ready?"
+    }
   ]
 }

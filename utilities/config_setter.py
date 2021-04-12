@@ -1,10 +1,10 @@
 class Config:
-    def __init__(self, count=0, is_started=False, option_list=['Eye', 'Lower Body', 'Upper Body', 'Neck', 'Shoulder'],
-                 area=''):
+    def __init__(self, count=0, is_started=False, option_list=None, area=''):
         self._count = count
         self._is_started = is_started
         self._option_list = option_list
         self._area = area
+        self._option_list = ['Eye', 'Lower Body', 'Upper Body', 'Neck', 'Shoulder']
 
     # getter method for count
     def get_count(self):
