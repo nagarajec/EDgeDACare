@@ -8,15 +8,21 @@ class DACareConfig:
         self._is_started = is_started
         self._area_list = area_list
         self._option_map = {
-            "Eyes": {},
+            "Eyes": {
+                "videos": ["upper_back", "arm"],
+                "gifs": ["chair-squat"]},
             "Lower Body": {
                 "videos": ["leg", "lower_back", "waist"],
                 "gifs": ["rear-pulses", "chair-squat", "calf-raise"]},
-            "Neck": {},
+            "Neck": {
+                "videos": ["upper_back", "arm"],
+                "gifs": ["chair-squat"]},
             "Upper Body": {
                 "videos": ["upper_back", "arm"],
                 "gifs": ["chair-squat"]},
-            "Shoulder": {}}
+            "Shoulder": {
+                "videos": ["upper_back", "arm"],
+                "gifs": ["chair-squat"]}}
 
     # getter method for snooze count
     def get_snooze_count(self):

@@ -1,7 +1,9 @@
 import base64
 import json
 import random
+import time
 from pathlib import Path
+import multiprocessing
 
 from utilities.time_utility import get_youtube_time_difference
 
@@ -18,6 +20,11 @@ def open_resource(resource_name, io_action):
 
 def get_message_type(message_type):
     return json.load(open_resource("messages.json", "r"))[message_type]
+
+
+def put_da_care_to_sleep(sleep_time):
+
+    process = multiprocessing.Process(target=time.sleep, args=(10, ))
 
 
 def get_video_url_and_duration_based_on_area(da_care_config):

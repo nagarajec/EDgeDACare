@@ -11,14 +11,14 @@ def play_video(da_care_config):
     video_url, video_duration = get_video_url_and_duration_based_on_area(da_care_config)
     print(f"Starting the video: '{video_url}'. The video will run for '{video_duration}' seconds . . .")
 
-    window = webview.create_window('DA Care', video_url, resizable=False, easy_drag=True, frameless=True, on_top=True)
+    window = webview.create_window('DA Care', video_url, resizable=False, easy_drag=True, frameless=False, on_top=True)
 
+    webview._multiprocessing = True  # Start the video
     webview.start()  # Start the video
 
     print("Closing the video pop-up . . .")
 
-    window.hidden = True
-    window.destroy()
+    window.destroy = True
 
 
 def load_gif_img(gif_path):

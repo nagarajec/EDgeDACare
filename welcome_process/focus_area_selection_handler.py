@@ -36,7 +36,7 @@ def display_focus_area_selector(da_care_config):
         [sg.Frame('', layout=frame_layout, border_width=0, background_color=WIN_COLOR, pad=((0, 0), (5, 5)))]]
 
     window = sg.Window('', window_layout, keep_on_top=True, background_color=WIN_COLOR, grab_anywhere=True,
-                       no_titlebar=True, auto_size_text=True, finalize=True, resizable=False, alpha_channel=0.97)
+                       no_titlebar=True, auto_size_text=True, finalize=True, resizable=False, alpha_channel=0.96)
 
     # Set cursor format for the buttons and the checkboxes
     window["-Buttons-"].Widget.config(cursor="hand2")
