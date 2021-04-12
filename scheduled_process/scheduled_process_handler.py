@@ -1,8 +1,11 @@
 import time
 import random
-from utilities.common_utility import get_message_type,get_gif_path
+
+import webview
+
+from utilities.common_utility import get_message_type, get_gif_path, get_video_url_and_duration_based_on_area
 from utilities.notification_utilities.user_reaction_notification import display_side_notification
-from utilities.video_gif_utility import play_video, load_gif_img
+from utilities.video_gif_utility import  load_gif_img
 from welcome_process.focus_area_selection_handler import display_focus_area_selector, set_user_focus_area
 
 
@@ -53,3 +56,16 @@ def snooze_handler(da_care_config):
         filename = get_gif_path(Area)
         time.sleep(10)
         load_gif_img(filename)
+
+def play_video(da_care_config):
+    video_url, video_duration = get_video_url_and_duration_based_on_area(da_care_config)
+    print(f"Starting the video: '{video_url}'. The video will run for '{video_duration}' seconds . . .")
+
+
+    window = webview.create_window('DA Care', video_url, resizable=False, easy_drag=True, frameless=False, on_top=True)
+
+    webview._multiprocessing = True  # Start the video
+    webview.start()  # Start the video
+
+    print("Closing the video pop-up . . .")
+    start_scheduled_process(da_care_config)
