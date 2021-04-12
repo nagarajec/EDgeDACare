@@ -22,7 +22,7 @@ def display_focus_area_selector(da_care_config):
 
     # Add the checkboxes and descriptions
     frame_layout += [[sg.CBox(option, key=f"{option}", auto_size_text=True, background_color=WIN_COLOR,
-                              text_color=TEXT_COLOR)] for option in da_care_config.get_option_list().keys()]
+                              text_color=TEXT_COLOR)] for option in da_care_config.get_option_map().keys()]
 
     # Add the buttons for the selection pop-up
     frame_layout += [
@@ -40,7 +40,7 @@ def display_focus_area_selector(da_care_config):
 
     # Set cursor format for the buttons and the checkboxes
     window["-Buttons-"].Widget.config(cursor="hand2")
-    for option in da_care_config.get_option_list():
+    for option in da_care_config.get_option_map():
         window[f"{option}"].Widget.config(cursor="hand2")
 
     while True:

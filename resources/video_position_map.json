@@ -1,6 +1,6 @@
 {
-  "movlee_video": {
-    "url": "https://youtu.be/xELgfiXSw-s?t={start_time}s",
+  "videos": {
+    "url": "https://www.youtube.com/embed/xELgfiXSw-s?autoplay=1&modestbranding=1&start={}",
     "full_body": {
       "duration_in_minutes": "7:28",
       "start": "0:00",

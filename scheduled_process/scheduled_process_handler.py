@@ -17,7 +17,7 @@ def start_scheduled_process(da_care_config):
     display_side_notification(title, message, display_duration_in_ms=600000, user_reaction_handlers=(
         [play_video, (da_care_config,)],
         [snooze_handler, (da_care_config,)],
-        [set_user_focus_area, (da_care_config, da_care_config.get_option_list().keys(),)]))
+        [set_user_focus_area, (da_care_config, da_care_config.get_option_map().keys(),)]))
 
     # If the user says yes or the notification times out
     pass
@@ -31,7 +31,7 @@ def snooze_handler(da_care_config):
         display_side_notification(title, message, display_duration_in_ms=5000, user_reaction_handlers=(
         [display_focus_area_selector, (da_care_config,)],
         [snooze_handler, (da_care_config,)],
-        [set_user_focus_area, (da_care_config, da_care_config.get_option_list().keys(),)]))
+        [set_user_focus_area, (da_care_config, da_care_config.get_option_map().keys(),)]))
         da_care_config.set_second_counter(60*10)
         start_scheduled_process(da_care_config)
 
@@ -42,8 +42,8 @@ def snooze_handler(da_care_config):
         display_side_notification(title, message, display_duration_in_ms=2000, user_reaction_handlers=(
         [display_focus_area_selector, (da_care_config,)],
         [snooze_handler, (da_care_config,)],
-        [set_user_focus_area, (da_care_config, da_care_config.get_option_list().keys(),)]))
-        set_user_focus_area(da_care_config, da_care_config.get_option_list().keys())
+        [set_user_focus_area, (da_care_config, da_care_config.get_option_map().keys(),)]))
+        set_user_focus_area(da_care_config, da_care_config.get_option_map().keys())
         selected_area_list = da_care_config.get_area_list()
         print("Selected Area List:"+ str(selected_area_list))
         print(type(selected_area_list))

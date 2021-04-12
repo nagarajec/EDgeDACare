@@ -20,30 +20,28 @@ def get_message_type(message_type):
     return json.load(open_resource("messages.json", "r"))[message_type]
 
 
-def get_video_based_on_area(list_of_areas):
-    video_url = "https://www.youtube.com/embed/xELgfiXSw-s?autoplay=1&modestbranding=1&start={}"
-    Video_map = json.load(open_resource("video_position_map.json", "r"))
-    Area = random.choice(list_of_areas)
-    print(Area)
-    if Area == "Eyes":
-        start = Video_map["movlee_video"]["upper_back"]["start"]
-        end = Video_map["movlee_video"]["upper_back"]["stop"]
-    elif Area == "Lower Body":
-        start = Video_map["movlee_video"]["lower_back"]["start"]
-        end = Video_map["movlee_video"]["lower_back"]["stop"]
-    elif Area == "Upper Body":
-        start = Video_map["movlee_video"]["upper_back"]["start"]
-        end = Video_map["movlee_video"]["upper_back"]["stop"]
-    elif Area == "waist":
-        start = Video_map["movlee_video"]["waist"]["start"]
-        end = Video_map["movlee_video"]["waist"]["stop"]
-    else:
-        start = Video_map["movlee_video"]["arm"]["start"]
-        end = Video_map["movlee_video"]["arm"]["stop"]
-        print(start)
-        print(end)
-    start_time = get_youtube_time_difference(start, end)
-    return video_url.format(int(start_time))
+def get_video_url_and_duration_based_on_area(da_care_config):
+    area = random.choice(da_care_config.get_area_list())
+
+    print(f"The current area is: '{area}'")
+
+    if area in ("Eyes", "Neck", "Shoulder"):
+        area = "Upper Body"
+        # TODO: Right now, we are making this to point to upper body, change it to eyes as needed
+
+    video_map = json.load(open_resource("video_position_map.json", "r"))["videos"]
+    video_url = video_map["url"]
+
+    video_area = random.choice(da_care_config.get_option_map()[area]["videos"])
+    video_config = video_map[video_area]
+    start, end = video_config["start"], video_config["stop"]
+
+    print(f"Video area: '{video_area}'; Video config: {video_config}; Video start/stop time: '{start}'/'{end}'")
+
+    video_start_time_in_seconds = get_youtube_time_difference(start)
+    video_duration = get_youtube_time_difference(end, start)
+
+    return video_url.format(int(video_start_time_in_seconds)), video_duration
 
 
 def get_gif_path(area):

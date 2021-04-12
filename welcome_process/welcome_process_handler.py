@@ -22,5 +22,5 @@ def welcome_the_user(da_care_config):
     # Display the notification prompt for User focus areas
     display_side_notification(title, message, display_duration_in_ms=600000, user_reaction_handlers=(
         [display_focus_area_selector, (da_care_config,)],
-        [set_user_focus_area, (da_care_config, da_care_config.get_option_list().keys(),)],
-        [set_user_focus_area, (da_care_config, da_care_config.get_option_list().keys(),)]))
+        [set_user_focus_area, (da_care_config, da_care_config.get_option_map().keys(),)],
+        [set_user_focus_area, (da_care_config, da_care_config.get_option_map().keys(),)]))
