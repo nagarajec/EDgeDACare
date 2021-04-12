@@ -5,7 +5,8 @@ from pathlib import Path
 import random
 from utilities.time_utility import get_youtube_time_difference
 
-ROOT = sys.path[1]
+ROOT = Path(__file__).parent.parent
+
 
 
 def get_image_from_file(image_file_name):
