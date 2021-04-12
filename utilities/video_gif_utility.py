@@ -16,9 +16,11 @@ def play_video(da_care_config):
 
 
 def load_gif_img(gif_path):
-    window = Tk()
+    window = Toplevel()
     window.title('GIF')
     canvas = Canvas(window, width=500, height=500)
     canvas.pack()
+    print(gif_path)
     my_image = PhotoImage(file=gif_path)
+    print(my_image)
     canvas.create_image(0, 0, anchor=NW, image=my_image)
