@@ -1,6 +1,9 @@
 import base64
+import sys
 from pathlib import Path
+
+ROOT = sys.path[1]
 
 
 def get_image_from_file(image_file_name):
-    return base64.b64encode(open(f"{Path('../media/pictures')}/{image_file_name}", "rb").read())
+    return base64.b64encode(open(f"{Path(f'{ROOT}/media/pictures')}/{image_file_name}", "rb").read())
